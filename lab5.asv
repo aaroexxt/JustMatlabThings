@@ -24,44 +24,36 @@ xMax = Vo*tFlight*cosd(theta);
 fprintf('tFlight(s)\tyMax(m)\t\txMax(m)\n');
 fprintf('%.3f\t\t%.3f\t\t%.3f\n', tFlight,yMax,xMax);
 
-% Create an array of discrete time intervals, tInt, at which to calculate the projectile position and velocity %
+% Create array of y vs x values for plotting at discrete time intervals t %
+xInt = []
+yInt = []
+velInt = []
 tInt = linspace(0, tFlight, 100);
-
-% Create arrays to hold each value of the projectile at each discrete time interval in t %
-xInt = [];
-yInt = [];
-velInt = [];
-
-% Loop through tInt and calculate x, y, and vel for each point in tInt, store in arrays declared above %
-for itm = 1 : length(tInt)
-    t = tInt(itm);
-    Vx = Vo*cosd(theta); % x vel is constant, but calculate it anyways %
+for t = linspace(0, tFlight, 100)
+    Vx = Vo*cosd(theta); % x vel is constant %
     Vy = Vo*sind(theta)-(g*t); % y vel varies based on time %
     V = sqrt(Vx^2 + Vy^2);
     
     x = Vo*t*cosd(theta);
     y = Vo*t*sind(theta)-(0.5*g*t^2);
     
-    % Append to arrays %
     xInt(end+1) = x;
     yInt(end+1) = y;
     velInt(end+1) = V;
 end
 
-% Plot array of projectile flight path using xInt and yInt arrays %
-figure(1);
+% Plot array of projectile flight path %
 plot(xInt, yInt);
 title("Projectile Y Position (m) vs X Position (m)");
 xlabel("X Position (m)");
 ylabel("Y Position (m)");
 
-% Plot array of v values vs t to represent velocity of projectile vs time using velInt and tInt arrays %
+% Plot array of v values vs t to represent velocity of projectile vs time %
 figure(2);
-plot(tInt, velInt);
-title("Projectile Velocity (m/s) vs Time (s)");
-xlabel("Time (s)");
-ylabel("Velocity (m/s)");
+plot(xInt, yInt);
+title("Projectile Y Position (m) vs X Position (m)");
+xlabel("X Position (m)");
+ylabel("Y Position (m)");
 
 % Print message to end program %
-fprintf("Program finished!\n");
 
