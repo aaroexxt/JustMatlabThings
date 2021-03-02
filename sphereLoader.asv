@@ -1,0 +1,5 @@
+T = readtable("sphere.dat")
+SRadius = T(:, 1)
+SVRsphere = T(:, 4)
+
+plot(SRadius, SVRsphere)
