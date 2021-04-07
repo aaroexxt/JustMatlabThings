@@ -1,4 +1,4 @@
-approx = my_pi(100);
+approx = my_pi(100)
 nums = 1:100;
 
 clf;
@@ -11,7 +11,7 @@ title("Approximation of pi vs Iteration #");
 
 function [approx] = my_pi(Nterms)
     % define initial variables
-    approx = ones([1, Nterms])
+    approx = ones([1, Nterms]);
     % loop from 1 to Nterms
     for iter = 2:Nterms
         % declare frac as 1/(1+(nIters-1)*2), since this is the fractional portion of the approximation
@@ -23,7 +23,7 @@ function [approx] = my_pi(Nterms)
             mult = -1;
         end
         % add fraction to current approximation
-        approx(iter) = approx(iter-1)+(frac*mult)
+        approx(iter) = approx(iter-1)+(frac*mult);
     end
     % return val * 4
     approx = approx.*4;
