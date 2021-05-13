@@ -12,7 +12,7 @@ end
 %}
 
 clf;
-[aInt, rInt] = meshgrid(2500:100:3500, 10:5:40);
+[aInt, rInt] = meshgrid(2500:100:3500, 10:5:40)
 cost = FenceCost(aInt, rInt, 12, 9);
 mesh(aInt, rInt, cost);
 title("Fence Cost ($) vs Area and Curve Radius");
